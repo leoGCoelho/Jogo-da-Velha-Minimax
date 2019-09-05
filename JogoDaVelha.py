@@ -36,14 +36,14 @@ def cheio(tab):
         return False
 
 def venceu(tabAux, valor):
-    if (tabAux[1] == valor and tabAux[2] == valor and tabAux[3] == valor) or
+    if ((tabAux[1] == valor and tabAux[2] == valor and tabAux[3] == valor) or
     (tabAux[4] == valor and tabAux[5] == valor and tabAux[6] == valor) or
     (tabAux[7] == valor and tabAux[8] == valor and tabAux[9] == valor) or
     (tabAux[1] == valor and tabAux[5] == valor and tabAux[9] == valor) or
     (tabAux[3] == valor and tabAux[5] == valor and tabAux[7] == valor) or
     (tabAux[1] == valor and tabAux[4] == valor and tabAux[7] == valor) or
     (tabAux[2] == valor and tabAux[5] == valor and tabAux[8] == valor) or
-    (tabAux[3] == valor and tabAux[6] == valor and tabAux[9] == valor):
+    (tabAux[3] == valor and tabAux[6] == valor and tabAux[9] == valor)):
         return True
     else:
         return False
@@ -62,8 +62,17 @@ def printTab(tab):
 
 #======== MAIN ========
 print('JOGO DA VELHA - MINIMAX')
+printTab(tab)
 
 while not(cheio(tab)):
+    # Movimento do Jogador
+    if not(venceu(tab, 'O')):
+        jogadorMov()
+        printTab(tab)
+    else:
+        print('\n\nCOMPUTADOR VENCEU!!\n\n')
+        break
+
     # Movimento da IA
     if not(venceu(tab, 'X')):
         movVal = iaMov()
@@ -73,17 +82,8 @@ while not(cheio(tab)):
         else:
             tab[movVal] = 'X'
             printTab(tab)
-
     else:
         print('\n\nJOGADOR VENCEU!!\n\n')
-        break
-
-    # Movimento do Jogador
-    if not(venceu(tab, 'O')):
-        jogadorMov()
-        printTab(tab)
-    else:
-        print('\n\nCOMPUTADOR VENCEU!!\n\n')
         break
 
 if cheio(tab):
