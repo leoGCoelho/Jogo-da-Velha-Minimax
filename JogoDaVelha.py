@@ -19,6 +19,7 @@ def jogadorMov():
             print('\nMovimento invalido!\n\n')
 
 def iaMov():
+    print('move')
 
 
 #=== VERIFICACOES ===
